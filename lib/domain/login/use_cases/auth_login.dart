@@ -11,8 +11,6 @@ class AuthLoginImp implements AuthLogin {
 
   @override
   Future<bool> call(String email, String password) async {
-    print(email);
-    print(password);
     return await repository.authLogin(email, password);
   }
 }

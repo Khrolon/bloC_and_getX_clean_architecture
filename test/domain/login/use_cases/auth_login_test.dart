@@ -10,9 +10,10 @@ import 'auth_login_test.mocks.dart';
 void main() {
   final repository = MockAuthLoginRepository();
   final useCase = AuthLoginImp(repository);
+  var validEmail = 'vitor';
 
   test('Should sucess if email and password is valid', () async {
-    when(repository.authLogin('vitor', 'v')).thenAnswer((_) async => true);
+    when(repository.authLogin(any, any)).thenAnswer((_) async => true);
     final result = await useCase('vitor', 'v');
     expect(result, isTrue);
   });
