@@ -40,13 +40,13 @@ class MockAuthLoginDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.UserModel> getUser(
+  _i4.Future<_i2.UserModel> login(
     String? email,
     String? password,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getUser,
+          #login,
           [
             email,
             password,
@@ -55,7 +55,7 @@ class MockAuthLoginDataSource extends _i1.Mock
         returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
           this,
           Invocation.method(
-            #getUser,
+            #login,
             [
               email,
               password,

@@ -9,7 +9,7 @@ class AuthLoginRepositoryImpl implements AuthLoginRepository {
   @override
   Future<bool> authLogin(String email, String password) async {
     try {
-      dataSource.getUser(email, password);
+      dataSource.login(email, password);
       return true;
     } catch (e) {
       print(e);

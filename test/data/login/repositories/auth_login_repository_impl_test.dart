@@ -12,9 +12,9 @@ void main() {
   final dataSource = MockAuthLoginDataSource();
   final repository = AuthLoginRepositoryImpl(dataSource);
   test('Should success if create userModel', () async {
-    when(dataSource.getUser(any, any))
+    when(dataSource.login(any, any))
         .thenAnswer((_) async => UserModel(0, 'name', 'email', true));
-    final result = repository.dataSource.getUser('email', 'password');
+    final result = repository.dataSource.login('email', 'password');
 
     expect(result, isA<Future<UserModel>>());
   });
