@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:poc/data/login/datasources/auth_login_data_source.dart';
+import 'package:poc/data/login/datasources/user_login_data_source.dart';
 import 'package:poc/data/login/models/user_model.dart';
 import 'package:poc/global/constansts.dart';
 
-class EmailAuthLoginDataSource extends AuthLoginDataSource {
+class UserLoginData extends UserLoginDataSource {
   final Dio? dio;
 
-  EmailAuthLoginDataSource(this.dio);
+  UserLoginData(this.dio);
 
   @override
   Future<UserModel> login(String email, String password) async {
@@ -16,6 +16,6 @@ class EmailAuthLoginDataSource extends AuthLoginDataSource {
       var userModel = UserModel.fromJson(response.data);
       return userModel;
     }
-    return UserModel(0, 'name', 'email', true);
+    return UserModel(id: 0, name: 'name', email: 'email', isDev: true);
   }
 }

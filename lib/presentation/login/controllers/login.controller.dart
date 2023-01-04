@@ -1,25 +1,46 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:poc/domain/login/repositories/auth_login_repository.dart';
 
 class LoginController extends GetxController {
-  final AuthLoginRepository? authLoginRepository;
+  // final AuthLoginRepository? authLoginRepository;
   final count = 0.obs;
 
-  LoginController({this.authLoginRepository});
+  // LoginController({this.authLoginRepository});
 
-  @override
-  void onInit() {
-    count;
-    super.onInit();
+  RxBool loading = false.obs;
+
+  TextEditingController loginController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  forgothPassword() {
+    print("Criar senha clicado");
   }
 
-  @override
-  void onReady() {
-    count;
-    super.onReady();
+  userLogin() {
+    print("Login com usuario clicado");
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  googleLogin() {
+    print("Login google clicado");
+  }
+
+  createUser() {
+    print("Criar senha clicado");
+  }
+
+  // @override
+  // void onInit() {
+  //   count;
+  //   super.onInit();
+  // }
+
+  // @override
+  // void onReady() {
+  //   count;
+  //   super.onReady();
+  // }
+
+  // @override
+  // void onClose() {}
+  // void increment() => count.value++;
 }
