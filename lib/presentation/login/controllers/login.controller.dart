@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poc/domain/login/use_cases/forgoth_password.dart';
 
 class LoginController extends GetxController {
   // final AuthLoginRepository? authLoginRepository;
   final count = 0.obs;
-
-  // LoginController({this.authLoginRepository});
 
   RxBool loading = false.obs;
 
@@ -14,6 +13,7 @@ class LoginController extends GetxController {
 
   forgothPassword() {
     print("Criar senha clicado");
+    // forgothPasswordUseCase();
   }
 
   userLogin() {

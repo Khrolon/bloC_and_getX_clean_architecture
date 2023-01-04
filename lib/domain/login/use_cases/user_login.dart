@@ -1,11 +1,11 @@
-import 'package:poc/domain/login/repositories/user_login_repository.dart';
+import 'package:poc/domain/login/repositories/login_repository.dart';
 
 abstract class UserLogin {
   Future<bool> call(String email, String password);
 }
 
 class UserLoginImp implements UserLogin {
-  final UserLoginRepository repository;
+  final LoginRepository repository;
 
   UserLoginImp(this.repository);
 

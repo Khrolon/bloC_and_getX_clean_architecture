@@ -1,5 +1,9 @@
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:poc/data/login/datasources/google_auth_login_data_source.dart';
+import 'package:poc/data/login/models/user_model.dart';
+
+abstract class GoogleLoginDataSource {
+  Future<GoogleSignInAccount?> googleLogin();
+}
 
 class GoogleLogin extends GoogleLoginDataSource {
   final _googleSignIn = GoogleSignIn();

@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:poc/data/login/datasources/user_login_data_source.dart';
 import 'package:poc/data/login/models/user_model.dart';
 import 'package:poc/global/constansts.dart';
+
+abstract class UserLoginDataSource {
+  Future<UserModel> login(String email, String password);
+}
 
 class UserLoginData extends UserLoginDataSource {
   final Dio? dio;
