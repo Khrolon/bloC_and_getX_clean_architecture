@@ -1,1 +1,2 @@
-String apiAuthPath = 'https://cpd1.mitraecp.com:4028/mitraspace/auth/signup';
+String apiLoginPath = 'https://cpd1.mitraecp.com:4028/mitraspace/auth/login';
+                    

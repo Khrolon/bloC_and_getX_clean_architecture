@@ -33,7 +33,7 @@ class LoginScreen extends GetView<LoginController> {
                   CustomTextField(
                     labelText: 'E-mail'.tr,
                     obscureText: false,
-                    controller: controller.loginController,
+                    controller: controller.emailController,
                     labelTextFontSize: 16,
                     // enabled: controllerServer.getSelectedIsNotEmpty() &&
                     //     controllerLogin.checkTermsOfUser.isTrue,

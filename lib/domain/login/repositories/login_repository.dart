@@ -1,6 +1,6 @@
 abstract class LoginRepository {
   forgothPassword();
   Future<bool> userLogin(String email, String password);
-  googleLogin();
+  Future<bool> googleLogin();
   createUser();
 }

@@ -1,20 +1,16 @@
-import 'package:poc/data/login/external/user_login.dart';
+import 'package:poc/data/login/external/google_login_data_source.dart';
+import 'package:poc/data/login/external/user_login_data_source.dart';
 import 'package:poc/domain/login/repositories/login_repository.dart';
 
-class LoginRepositoryImpl implements LoginRepository {
-  final UserLoginData dataSource;
+class LoginRepositoryImpl extends LoginRepository {
+  final UserLoginData userLoginData;
+  final GoogleLoginDataSource googleLoginDataSource;
 
-  LoginRepositoryImpl(this.dataSource);
+  LoginRepositoryImpl(this.userLoginData, this.googleLoginDataSource);
 
   @override
   Future<bool> userLogin(String email, String password) async {
-    try {
-      dataSource.login(email, password);
-      return true;
-    } catch (e) {
-      print(e);
-      return false;
-    }
+    return await userLoginData.login(email, password);
   }
 
   @override
@@ -30,8 +26,7 @@ class LoginRepositoryImpl implements LoginRepository {
   }
 
   @override
-  googleLogin() {
-    // TODO: implement googleLogin
-    throw UnimplementedError();
+  Future<bool> googleLogin() async {
+    return await googleLoginDataSource.googleLogin();
   }
 }

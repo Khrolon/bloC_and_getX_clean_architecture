@@ -4,7 +4,7 @@ abstract class ForgothPassword {
   call();
 }
 
-class ForgothPasswordImp implements ForgothPassword {
+class ForgothPasswordImp extends ForgothPassword {
   final LoginRepository repository;
 
   ForgothPasswordImp(this.repository);
