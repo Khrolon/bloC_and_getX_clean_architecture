@@ -1,27 +1,27 @@
 class Environments {
-  static const String production = 'prod';
-  static const String qas = 'QAS';
-  static const String dev = 'dev';
-  static const String local = 'local';
+  static const String PRODUCTION = 'prod';
+  static const String QAS = 'QAS';
+  static const String DEV = 'dev';
+  static const String LOCAL = 'local';
 }
 
 class ConfigEnvironments {
-  static const String _currentEnvironments = Environments.production;
+  static const String _currentEnvironments = Environments.LOCAL;
   static final List<Map<String, String>> _availableEnvironments = [
     {
-      'env': Environments.local,
+      'env': Environments.LOCAL,
       'url': 'http://localhost:8080/api/',
     },
     {
-      'env': Environments.dev,
+      'env': Environments.DEV,
       'url': '',
     },
     {
-      'env': Environments.qas,
+      'env': Environments.QAS,
       'url': '',
     },
     {
-      'env': Environments.production,
+      'env': Environments.PRODUCTION,
       'url': '',
     },
   ];

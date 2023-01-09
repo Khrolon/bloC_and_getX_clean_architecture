@@ -1,1 +1,1 @@
-export 'package:poc/infrastructure/navigation/bindings/controllers/login.controller.binding.dart';
+export 'package:poc/infrastructure/navigation/bindings/controllers/login.controller.binding.dart'; 
