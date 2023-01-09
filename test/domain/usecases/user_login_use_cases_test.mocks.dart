@@ -3,13 +3,14 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
-import 'package:dartz/dartz.dart' as _i2;
+import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:poc/data/repositories/login_repository.dart' as _i3;
-import 'package:poc/domain/entities/user_entity.dart' as _i6;
-import 'package:poc/errors/failures.dart' as _i5;
+import 'package:poc/data/data_sources/user_login_data_source.dart' as _i2;
+import 'package:poc/data/repositories/login_repository.dart' as _i4;
+import 'package:poc/domain/entities/user_entity.dart' as _i7;
+import 'package:poc/errors/failures.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,8 +23,9 @@ import 'package:poc/errors/failures.dart' as _i5;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
-  _FakeEither_0(
+class _FakeIUserLoginDataSource_0 extends _i1.SmartFake
+    implements _i2.IUserLoginDataSource {
+  _FakeIUserLoginDataSource_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -32,16 +34,35 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
         );
 }
 
-/// A class which mocks [LoginRepository].
+class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
+  _FakeEither_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+/// A class which mocks [LoginRepositoryImp].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginRepository extends _i1.Mock implements _i3.LoginRepository {
-  MockLoginRepository() {
+class MockLoginRepositoryImp extends _i1.Mock
+    implements _i4.LoginRepositoryImp {
+  MockLoginRepositoryImp() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.UserEntity>> userLogin(
+  _i2.IUserLoginDataSource get userLoginDataSource => (super.noSuchMethod(
+        Invocation.getter(#userLoginDataSource),
+        returnValue: _FakeIUserLoginDataSource_0(
+          this,
+          Invocation.getter(#userLoginDataSource),
+        ),
+      ) as _i2.IUserLoginDataSource);
+  @override
+  _i5.Future<_i3.Either<_i6.Failure, _i7.UserEntity>> userLogin(
     String? email,
     String? password,
   ) =>
@@ -53,8 +74,8 @@ class MockLoginRepository extends _i1.Mock implements _i3.LoginRepository {
             password,
           ],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.UserEntity>>.value(
-            _FakeEither_0<_i5.Failure, _i6.UserEntity>(
+        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i7.UserEntity>>.value(
+            _FakeEither_1<_i6.Failure, _i7.UserEntity>(
           this,
           Invocation.method(
             #userLogin,
@@ -64,5 +85,5 @@ class MockLoginRepository extends _i1.Mock implements _i3.LoginRepository {
             ],
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.UserEntity>>);
+      ) as _i5.Future<_i3.Either<_i6.Failure, _i7.UserEntity>>);
 }

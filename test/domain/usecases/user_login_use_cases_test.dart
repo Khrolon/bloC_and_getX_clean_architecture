@@ -10,13 +10,13 @@ import 'package:poc/errors/failures.dart';
 import '../../mock/mock_user_model.dart';
 import 'user_login_use_cases_test.mocks.dart';
 
-@GenerateMocks([LoginRepository])
+@GenerateMocks([LoginRepositoryImp])
 void main() {
-  late LoginRepository repository;
+  late LoginRepositoryImp repository;
   late UserLoginUseCase usecase;
 
   setUp(() {
-    repository = MockLoginRepository();
+    repository = MockLoginRepositoryImp();
     usecase = UserLoginUseCase(repository);
   });
   test('Should return UserModel when given a valid email and password',
