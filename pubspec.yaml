@@ -13,6 +13,7 @@ dependencies:
   dartz: ^0.10.1
   get: 4.6.5
   get_storage: ^2.0.3
+  get_it: ^7.2.0
   flutter:
     sdk: flutter
 

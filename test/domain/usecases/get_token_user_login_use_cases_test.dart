@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart';
-import 'package:poc/errors/failures.dart';
+import 'package:poc/core/errors/failures.dart';
 
 import 'user_login_use_cases_test.mocks.dart';
 

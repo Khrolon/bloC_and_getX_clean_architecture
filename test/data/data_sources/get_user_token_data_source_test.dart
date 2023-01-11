@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
 import 'package:poc/data/http_client/http_client.dart';
-import 'package:poc/errors/failures.dart';
+import 'package:poc/core/errors/failures.dart';
 
 import '../../mock/mock_models.dart';
 import 'user_login_data_source_test.mocks.dart';

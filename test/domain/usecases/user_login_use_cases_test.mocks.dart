@@ -11,7 +11,7 @@ import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i3;
 import 'package:poc/data/data_sources/user_login_data_source.dart' as _i2;
 import 'package:poc/data/repositories/login_repository.dart' as _i5;
 import 'package:poc/domain/entities/user_entity.dart' as _i8;
-import 'package:poc/errors/failures.dart' as _i7;
+import 'package:poc/core/errors/failures.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

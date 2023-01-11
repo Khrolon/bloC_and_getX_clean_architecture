@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
 import 'package:poc/data/http_client/http_client.dart';
-import 'package:poc/errors/failures.dart';
-import 'package:poc/utils/constants.dart';
+import 'package:poc/core/errors/failures.dart';
+import 'package:poc/core/utils/constants.dart';
 
 abstract class IGetUserTokenDataSource {
   Future<bool> getUserToken(String email, String password);

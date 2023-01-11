@@ -2,7 +2,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:poc/domain/repositories/login_repository.dart';
 
-import '../../errors/failures.dart';
+import '../../core/errors/failures.dart';
 
 abstract class IGetTokenUserLoginUseCase {
   Future<Either<Failure, bool>> call(String email, String password);

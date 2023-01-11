@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
 import 'package:poc/data/data_sources/user_login_data_source.dart';
 import 'package:poc/data/repositories/login_repository.dart';
-import 'package:poc/errors/failures.dart';
+import 'package:poc/core/errors/failures.dart';
 
 import '../../mock/mock_models.dart';
 import 'login_repository_test.mocks.dart';

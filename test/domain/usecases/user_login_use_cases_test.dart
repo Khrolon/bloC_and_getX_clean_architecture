@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:poc/data/repositories/login_repository.dart';
 import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/domain/usecases/user_login_use_cases.dart';
-import 'package:poc/errors/failures.dart';
+import 'package:poc/core/errors/failures.dart';
 
 import '../../mock/mock_models.dart';
 import 'user_login_use_cases_test.mocks.dart';
