@@ -15,6 +15,6 @@ class UserLoginUseCase implements IUserLoginUseCase {
   @override
   Future<Either<Failure, UserEntity>> call(
       String email, String password) async {
-    return await repository.userLogin(email, password);
+    return await repository.getUserLogin(email, password);
   }
 }

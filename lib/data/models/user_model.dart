@@ -8,7 +8,7 @@ class UserModel extends UserEntity {
       required super.email});
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json['id'],
+        id: json['id'] as int,
         picture: json['picture'],
         name: json['name'],
         email: json['email'],

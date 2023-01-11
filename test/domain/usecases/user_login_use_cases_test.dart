@@ -7,7 +7,7 @@ import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/domain/usecases/user_login_use_cases.dart';
 import 'package:poc/errors/failures.dart';
 
-import '../../mock/mock_user_model.dart';
+import '../../mock/mock_models.dart';
 import 'user_login_use_cases_test.mocks.dart';
 
 @GenerateMocks([LoginRepositoryImp])
@@ -21,19 +21,19 @@ void main() {
   });
   test('Should return UserModel when given a valid email and password',
       () async {
-    when(repository.userLogin('email', 'password'))
+    when(repository.getUserLogin('email', 'password'))
         .thenAnswer((_) async => Right<Failure, UserEntity>(mockUser));
     final result = await usecase('email', 'password');
     expect(result, Right(mockUser));
-    verify(repository.userLogin('email', 'password')).called(1);
+    verify(repository.getUserLogin('email', 'password')).called(1);
   });
 
   test('Should return Failure when given a invalid email and password',
       () async {
-    when(repository.userLogin('email', 'password'))
+    when(repository.getUserLogin('email', 'password'))
         .thenAnswer((_) async => Left<Failure, UserEntity>(UserFailure()));
     final result = await usecase('email', 'password');
     expect(result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
-    verify(repository.userLogin('email', 'password')).called(1);
+    verify(repository.getUserLogin('email', 'password')).called(1);
   });
 }

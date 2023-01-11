@@ -6,6 +6,7 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i5;
 import 'package:poc/data/data_sources/user_login_data_source.dart' as _i3;
 import 'package:poc/data/models/user_model.dart' as _i2;
 
@@ -40,13 +41,13 @@ class MockIUserLoginDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.UserModel> userLogin(
+  _i4.Future<_i2.UserModel> getUserLogin(
     String? email,
     String? password,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #userLogin,
+          #getUserLogin,
           [
             email,
             password,
@@ -55,7 +56,7 @@ class MockIUserLoginDataSource extends _i1.Mock
         returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
           this,
           Invocation.method(
-            #userLogin,
+            #getUserLogin,
             [
               email,
               password,
@@ -63,4 +64,30 @@ class MockIUserLoginDataSource extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.UserModel>);
+}
+
+/// A class which mocks [IGetUserTokenDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIGetUserTokenDataSource extends _i1.Mock
+    implements _i5.IGetUserTokenDataSource {
+  MockIGetUserTokenDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<bool> getUserToken(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserToken,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
 }

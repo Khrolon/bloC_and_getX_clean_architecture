@@ -3,14 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
-import 'package:dartz/dartz.dart' as _i3;
+import 'package:dartz/dartz.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i3;
 import 'package:poc/data/data_sources/user_login_data_source.dart' as _i2;
-import 'package:poc/data/repositories/login_repository.dart' as _i4;
-import 'package:poc/domain/entities/user_entity.dart' as _i7;
-import 'package:poc/errors/failures.dart' as _i6;
+import 'package:poc/data/repositories/login_repository.dart' as _i5;
+import 'package:poc/domain/entities/user_entity.dart' as _i8;
+import 'package:poc/errors/failures.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,8 +35,19 @@ class _FakeIUserLoginDataSource_0 extends _i1.SmartFake
         );
 }
 
-class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
-  _FakeEither_1(
+class _FakeIGetUserTokenDataSource_1 extends _i1.SmartFake
+    implements _i3.IGetUserTokenDataSource {
+  _FakeIGetUserTokenDataSource_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEither_2<L, R> extends _i1.SmartFake implements _i4.Either<L, R> {
+  _FakeEither_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -48,7 +60,7 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginRepositoryImp extends _i1.Mock
-    implements _i4.LoginRepositoryImp {
+    implements _i5.LoginRepositoryImp {
   MockLoginRepositoryImp() {
     _i1.throwOnMissingStub(this);
   }
@@ -62,28 +74,61 @@ class MockLoginRepositoryImp extends _i1.Mock
         ),
       ) as _i2.IUserLoginDataSource);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, _i7.UserEntity>> userLogin(
+  _i3.IGetUserTokenDataSource get getUserTokenDataSource => (super.noSuchMethod(
+        Invocation.getter(#getUserTokenDataSource),
+        returnValue: _FakeIGetUserTokenDataSource_1(
+          this,
+          Invocation.getter(#getUserTokenDataSource),
+        ),
+      ) as _i3.IGetUserTokenDataSource);
+  @override
+  _i6.Future<_i4.Either<_i7.Failure, _i8.UserEntity>> getUserLogin(
     String? email,
     String? password,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #userLogin,
+          #getUserLogin,
           [
             email,
             password,
           ],
         ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i7.UserEntity>>.value(
-            _FakeEither_1<_i6.Failure, _i7.UserEntity>(
+        returnValue: _i6.Future<_i4.Either<_i7.Failure, _i8.UserEntity>>.value(
+            _FakeEither_2<_i7.Failure, _i8.UserEntity>(
           this,
           Invocation.method(
-            #userLogin,
+            #getUserLogin,
             [
               email,
               password,
             ],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i7.UserEntity>>);
+      ) as _i6.Future<_i4.Either<_i7.Failure, _i8.UserEntity>>);
+  @override
+  _i6.Future<_i4.Either<_i7.Failure, bool>> getUserToken(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserToken,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i6.Future<_i4.Either<_i7.Failure, bool>>.value(
+            _FakeEither_2<_i7.Failure, bool>(
+          this,
+          Invocation.method(
+            #getUserToken,
+            [
+              email,
+              password,
+            ],
+          ),
+        )),
+      ) as _i6.Future<_i4.Either<_i7.Failure, bool>>);
 }

@@ -3,5 +3,7 @@ import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/errors/failures.dart';
 
 abstract class ILoginRepository {
-  Future<Either<Failure, UserEntity>> userLogin(String email, String password);
+  Future<Either<Failure, bool>> getUserToken(String email, String password);
+  Future<Either<Failure, UserEntity>> getUserLogin(
+      String email, String password);
 }
