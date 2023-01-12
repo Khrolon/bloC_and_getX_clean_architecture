@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:get/get.dart';
+import 'package:poc/core/inject/inject.dart';
 
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
 
 void main() async {
+  //NOTE: Inicilaiza o getIt
+  Inject.init();
+  
   //NOTE: Inicializa os comando flutter.
   WidgetsFlutterBinding.ensureInitialized();
 
