@@ -21,19 +21,19 @@ void main() {
   });
   test('Should return UserModel when given a valid email and password',
       () async {
-    when(repository.getUserLogin('email', 'password'))
+    when(repository.getUserLogin())
         .thenAnswer((_) async => Right<Failure, UserEntity>(mockUser));
-    final result = await usecase('email', 'password');
+    final result = await usecase();
     expect(result, Right(mockUser));
-    verify(repository.getUserLogin('email', 'password')).called(1);
+    verify(repository.getUserLogin()).called(1);
   });
 
   test('Should return Failure when given a invalid email and password',
       () async {
-    when(repository.getUserLogin('email', 'password'))
+    when(repository.getUserLogin())
         .thenAnswer((_) async => Left<Failure, UserEntity>(UserFailure()));
-    final result = await usecase('email', 'password');
+    final result = await usecase();
     expect(result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
-    verify(repository.getUserLogin('email', 'password')).called(1);
+    verify(repository.getUserLogin()).called(1);
   });
 }

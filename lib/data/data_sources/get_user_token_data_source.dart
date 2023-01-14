@@ -16,15 +16,17 @@ class GetUserTokenDataSourceImp implements IGetUserTokenDataSource {
   @override
   Future<bool> getUserToken(String email, String password) async {
     final response = await client.httpPost(
-      apiUrlForLogin,
+      apiUrlForGetToken,
       body: {
         "email": email,
         "password": password,
       },
     );
     if (response.statusCode == 200) {
-      var data = json.decode(response.data);
-      GetStorage().write('web_token', data["token"]);
+      var data = response.data;
+      print(data);
+      print(data["token"]);
+      GetStorage().write('web_token', (data["token"]).toString());
       return true;
     } else {
       throw UserFailure();

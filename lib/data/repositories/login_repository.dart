@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
+import 'package:poc/core/utils/constants.dart';
 
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
 import 'package:poc/data/data_sources/user_login_data_source.dart';
@@ -18,12 +19,10 @@ class LoginRepositoryImp extends ILoginRepository {
   );
 
   @override
-  Future<Either<Failure, UserEntity>> getUserLogin(
-      String email, String password) async {
+  Future<Either<Failure, UserEntity>> getUserLogin() async {
     try {
-      UserModel result =
-          await userLoginDataSource.getUserLogin(email, password);
-      return Right(result);
+      globalUserLogged = await userLoginDataSource.getUserLogin();
+      return Right(globalUserLogged);
     } catch (e) {
       return Left(UserFailure());
     }

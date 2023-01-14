@@ -26,20 +26,20 @@ void main() {
 
   group('GetUserLogin: ', () {
     test('Should return user model with a valid email and password', () async {
-      when(userLoginDataSource.getUserLogin('email', 'password'))
+      when(userLoginDataSource.getUserLogin())
           .thenAnswer((_) async => mockUserModel);
-      final result = await repository.getUserLogin('email', 'password');
+      final result = await repository.getUserLogin();
       expect(result, Right(mockUserModel));
-      verify(userLoginDataSource.getUserLogin('email', 'password')).called(1);
+      verify(userLoginDataSource.getUserLogin()).called(1);
     });
 
     test('Should return user failure with a error on data source', () async {
-      when(userLoginDataSource.getUserLogin('email', 'password'))
+      when(userLoginDataSource.getUserLogin())
           .thenThrow((_) async => UserFailure());
-      final result = await repository.getUserLogin('email', 'password');
+      final result = await repository.getUserLogin();
       expect(
           result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
-      verify(userLoginDataSource.getUserLogin('email', 'password')).called(1);
+      verify(userLoginDataSource.getUserLogin()).called(1);
     });
   });
 

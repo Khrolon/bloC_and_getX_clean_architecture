@@ -1,13 +1,12 @@
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
 import 'package:poc/data/http_client/http_client.dart';
 import 'package:poc/data/models/user_model.dart';
 import 'package:poc/core/errors/failures.dart';
 import 'package:poc/core/utils/constants.dart';
 
 abstract class IUserLoginDataSource {
-  Future<UserModel> getUserLogin(String email, String password);
+  Future<UserModel> getUserLogin();
 }
 
 class UserDataSourceImp implements IUserLoginDataSource {
@@ -15,10 +14,11 @@ class UserDataSourceImp implements IUserLoginDataSource {
 
   UserDataSourceImp(this.client);
   @override
-  Future<UserModel> getUserLogin(String email, String password) async {
-    final response = await client.httpGet(apiUrlForLogin);
+  Future<UserModel> getUserLogin() async {
+    final response = await client.httpGet(apiUrlForGetUserData);
     if (response.statusCode == 200) {
-      return UserModel.fromJson(jsonDecode(response.data));
+      var userModel = UserModel.fromJson(response.data);
+      return userModel;
     } else {
       throw UserFailure();
     }

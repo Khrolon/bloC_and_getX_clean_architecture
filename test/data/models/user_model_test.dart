@@ -16,9 +16,9 @@ void main() {
 
   test("Should return a valid model", () {
     //Arrange
-    Map<String, dynamic> jsonMap = json.decode(mockJsonUSer);
+    // Map<String, dynamic> jsonMap = json.decode(mockJsonUSer);
     //Act
-    final result = UserModel.fromJson(jsonMap);
+    final result = UserModel.fromJson(mockJsonUSer);
     //Assert
     expect([
       mockUserModel.id,

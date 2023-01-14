@@ -20,7 +20,7 @@ void main() {
     //Arrange
     when(client.httpPost(any, body: {"email": "email", "password": "password"}))
         .thenAnswer(
-            (_) async => HttpResponse(data: mockJsonToken, statusCode: 200));
+            (_) async => HttpResponse(data: mockJsonUSer, statusCode: 200));
     //Act
     final result = await userDataSource.getUserToken('email', 'password');
     //Assert

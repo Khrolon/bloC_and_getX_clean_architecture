@@ -23,7 +23,7 @@ void main() {
     when(client.httpGet(any)).thenAnswer(
         (_) async => HttpResponse(data: mockJsonUSer, statusCode: 200));
     //Act
-    final result = await userDataSource.getUserLogin('email', 'password');
+    final result = await userDataSource.getUserLogin();
     //Assert
     expect(result.name, mockUserModel.name);
     verify(client.httpGet(any)).called(1);
@@ -35,7 +35,7 @@ void main() {
     when(client.httpGet(any))
         .thenAnswer((_) async => HttpResponse(data: null, statusCode: 400));
     //Act
-    final result = userDataSource.getUserLogin('email', 'password');
+    final result = userDataSource.getUserLogin();
     //Assert
     expect(() => result, throwsA(isA<UserFailure>()));
     // verify(client.httpGet(any)).called(1);

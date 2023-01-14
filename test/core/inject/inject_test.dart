@@ -8,7 +8,7 @@ import 'package:poc/data/repositories/login_repository.dart';
 import 'package:poc/domain/repositories/login_repository.dart';
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart';
 import 'package:poc/domain/usecases/user_login_use_cases.dart';
-import 'package:poc/presentation/login/controllers/login.controller.dart';
+import 'package:poc/presentation/login/bloc/login_bloc.dart';
 
 void main() {
   Inject.init();
@@ -77,8 +77,8 @@ void main() {
       () async {
     //Arrange
     //Act
-    var injection = GetIt.I.get<LoginController>();
+    var injection = GetIt.I.get<LoginBloc>();
     //Asssert
-    expect(injection, isA<LoginController>());
+    expect(injection, isA<LoginBloc>());
   });
 }

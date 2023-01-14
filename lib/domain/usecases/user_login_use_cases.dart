@@ -4,7 +4,7 @@ import 'package:poc/domain/repositories/login_repository.dart';
 import 'package:poc/core/errors/failures.dart';
 
 abstract class IUserLoginUseCase {
-  Future<Either<Failure, UserEntity>> call(String email, String password);
+  Future<Either<Failure, UserEntity>> call();
 }
 
 class UserLoginUseCase implements IUserLoginUseCase {
@@ -13,8 +13,7 @@ class UserLoginUseCase implements IUserLoginUseCase {
   UserLoginUseCase(this.repository);
 
   @override
-  Future<Either<Failure, UserEntity>> call(
-      String email, String password) async {
-    return await repository.getUserLogin(email, password);
+  Future<Either<Failure, UserEntity>> call() async {
+    return await repository.getUserLogin();
   }
 }
