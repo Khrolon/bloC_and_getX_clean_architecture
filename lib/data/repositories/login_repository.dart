@@ -4,7 +4,6 @@ import 'package:poc/core/utils/constants.dart';
 
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
 import 'package:poc/data/data_sources/user_login_data_source.dart';
-import 'package:poc/data/models/user_model.dart';
 import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/domain/repositories/login_repository.dart';
 import 'package:poc/core/errors/failures.dart';

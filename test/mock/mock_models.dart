@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:poc/data/models/user_model.dart';
 import 'package:poc/domain/entities/user_entity.dart';
 
