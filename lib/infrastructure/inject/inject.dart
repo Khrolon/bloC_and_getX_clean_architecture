@@ -37,6 +37,11 @@ class Inject {
     //blocs
     getIt.registerLazySingleton<LoginBloc>(() => LoginBloc(
         userLoginUseCase: getIt(), getTokenUserLoginUseCase: getIt()));
-    getIt.registerLazySingleton<HomeBloc>(() => HomeBloc(HomeState()));
+    getIt.registerLazySingleton<HomeBloc>(
+      () => HomeBloc(
+        initialState: HomeState(),
+        userModel: getIt.get<LoginBloc>().userModel,
+      ),
+    );
   }
 }

@@ -13,21 +13,12 @@ class AppRoutes {
           create: (_) => GetIt.instance(),
           child: LoginScreen(bloc: GetIt.instance()),
         ),
-    '/home': (BuildContext context) {
-      final arguments = (ModalRoute.of(context)?.settings.arguments ??
-          <String, dynamic>{}) as Map;
-      print(arguments['userModel'].name);
-      return BlocProvider<HomeBloc>(
-        create: (_) => GetIt.instance(),
-        child: HomeScreen(
-          bloc: HomeBloc(
-            HomeInitialState(
-              userModel: arguments['userModel'],
-            ),
+    '/home': (BuildContext context) => BlocProvider<HomeBloc>(
+          create: (_) => GetIt.instance(),
+          child: HomeScreen(
+            bloc: GetIt.instance(),
           ),
         ),
-      );
-    }
   };
 
   static String initialRoute = '/';

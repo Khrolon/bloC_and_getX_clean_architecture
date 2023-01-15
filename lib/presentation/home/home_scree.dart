@@ -18,14 +18,11 @@ class HomeScreen extends StatelessWidget {
       body: BlocBuilder(
         bloc: bloc,
         builder: ((context, state) {
-          if (state is HomeInitialState) {
-            return Container(
-              child: Center(
-                child: Text(state.userModel.name),
-              ),
-            );
-          }
-          return SizedBox();
+          return Container(
+            child: Center(
+              child: Text(bloc.userModel.name),
+            ),
+          );
         }),
       ),
     );

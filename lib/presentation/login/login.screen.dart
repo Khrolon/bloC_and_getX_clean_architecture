@@ -22,7 +22,6 @@ class LoginScreen extends StatelessWidget {
           Navigator.pushNamed(
             context,
             '/home',
-            arguments: {'userModel': state.userModel},
           );
         }
       },

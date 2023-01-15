@@ -8,9 +8,4 @@ class HomeState extends Equatable {
   List<Object?> get props => [];
 }
 
-class HomeInitialState extends HomeState {
-  final UserEntity userModel;
-  HomeInitialState({
-    required this.userModel,
-  });
-}
+class HomeInitialState extends HomeState {}

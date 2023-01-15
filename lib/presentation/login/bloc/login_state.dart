@@ -17,8 +17,4 @@ class LoginStateError extends LoginState {
   LoginStateError(this.error);
 }
 
-class LoginCompleteGoToSecondPage extends LoginState {
-  final UserEntity userModel;
-
-  LoginCompleteGoToSecondPage(this.userModel);
-}
+class LoginCompleteGoToSecondPage extends LoginState {}
