@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:poc/core/inject/inject.dart';
-import 'package:poc/core/routes/routes.dart';
+import 'package:poc/infrastructure/inject/inject.dart';
+import 'package:poc/infrastructure/routes/routes.dart';
 
 
 void main() async {
