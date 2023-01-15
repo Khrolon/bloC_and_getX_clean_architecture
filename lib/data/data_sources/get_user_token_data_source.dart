@@ -22,8 +22,6 @@ class GetUserTokenDataSourceImp implements IGetUserTokenDataSource {
     );
     if (response.statusCode == 200) {
       var data = response.data;
-      print(data);
-      print(data["token"]);
       GetStorage().write('web_token', (data["token"]).toString());
       return true;
     } else {

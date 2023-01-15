@@ -41,7 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     var result = await userLoginUseCase();
     result.fold(
       (l) => emit(LoginStateError('Login erro')),
-      (r) => emit(LoginCompleteGoToSecondPage()),
+      (r) => emit(LoginCompleteGoToSecondPage(r)),
     );
   }
 
