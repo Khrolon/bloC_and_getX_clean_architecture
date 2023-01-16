@@ -3,11 +3,14 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i5;
-import 'package:poc/data/data_sources/user_login_data_source.dart' as _i3;
+import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart'
+    as _i7;
+import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i6;
+import 'package:poc/data/data_sources/user_login_data_source.dart' as _i4;
+import 'package:poc/data/external/google_sign_in.dart' as _i3;
 import 'package:poc/data/models/user_model.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -31,42 +34,53 @@ class _FakeUserModel_0 extends _i1.SmartFake implements _i2.UserModel {
         );
 }
 
+class _FakeGoogleSignInUser_1 extends _i1.SmartFake
+    implements _i3.GoogleSignInUser {
+  _FakeGoogleSignInUser_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [IUserLoginDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockIUserLoginDataSource extends _i1.Mock
-    implements _i3.IUserLoginDataSource {
+    implements _i4.IUserLoginDataSource {
   MockIUserLoginDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.UserModel> getUserLogin() => (super.noSuchMethod(
+  _i5.Future<_i2.UserModel> getUserLogin() => (super.noSuchMethod(
         Invocation.method(
           #getUserLogin,
           [],
         ),
-        returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
+        returnValue: _i5.Future<_i2.UserModel>.value(_FakeUserModel_0(
           this,
           Invocation.method(
             #getUserLogin,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.UserModel>);
+      ) as _i5.Future<_i2.UserModel>);
 }
 
 /// A class which mocks [IGetUserTokenDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockIGetUserTokenDataSource extends _i1.Mock
-    implements _i5.IGetUserTokenDataSource {
+    implements _i6.IGetUserTokenDataSource {
   MockIGetUserTokenDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<bool> getUserToken(
+  _i5.Future<bool> getUserToken(
     String? email,
     String? password,
   ) =>
@@ -78,6 +92,33 @@ class MockIGetUserTokenDataSource extends _i1.Mock
             password,
           ],
         ),
-        returnValue: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+        returnValue: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+}
+
+/// A class which mocks [IGetUserByGoogleLoginDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIGetUserByGoogleLoginDataSource extends _i1.Mock
+    implements _i7.IGetUserByGoogleLoginDataSource {
+  MockIGetUserByGoogleLoginDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i3.GoogleSignInUser> getUserByGoogleLogin() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserByGoogleLogin,
+          [],
+        ),
+        returnValue:
+            _i5.Future<_i3.GoogleSignInUser>.value(_FakeGoogleSignInUser_1(
+          this,
+          Invocation.method(
+            #getUserByGoogleLogin,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i3.GoogleSignInUser>);
 }

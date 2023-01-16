@@ -7,7 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:get/get.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:poc/data/http_client/http_client.dart' as _i3;
+import 'package:poc/data/external/http_client.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

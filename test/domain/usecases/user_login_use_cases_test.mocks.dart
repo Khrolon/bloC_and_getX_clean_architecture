@@ -3,15 +3,18 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
-import 'package:dartz/dartz.dart' as _i4;
+import 'package:dartz/dartz.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:poc/core/errors/failures.dart' as _i7;
+import 'package:poc/core/errors/failures.dart' as _i8;
+import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart'
+    as _i4;
 import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i3;
 import 'package:poc/data/data_sources/user_login_data_source.dart' as _i2;
-import 'package:poc/data/repositories/login_repository.dart' as _i5;
-import 'package:poc/domain/entities/user_entity.dart' as _i8;
+import 'package:poc/data/external/google_sign_in.dart' as _i10;
+import 'package:poc/data/repositories/login_repository.dart' as _i6;
+import 'package:poc/domain/entities/user_entity.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -46,8 +49,19 @@ class _FakeIGetUserTokenDataSource_1 extends _i1.SmartFake
         );
 }
 
-class _FakeEither_2<L, R> extends _i1.SmartFake implements _i4.Either<L, R> {
-  _FakeEither_2(
+class _FakeIGetUserByGoogleLoginDataSource_2 extends _i1.SmartFake
+    implements _i4.IGetUserByGoogleLoginDataSource {
+  _FakeIGetUserByGoogleLoginDataSource_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEither_3<L, R> extends _i1.SmartFake implements _i5.Either<L, R> {
+  _FakeEither_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -60,7 +74,7 @@ class _FakeEither_2<L, R> extends _i1.SmartFake implements _i4.Either<L, R> {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginRepositoryImp extends _i1.Mock
-    implements _i5.LoginRepositoryImp {
+    implements _i6.LoginRepositoryImp {
   MockLoginRepositoryImp() {
     _i1.throwOnMissingStub(this);
   }
@@ -82,23 +96,32 @@ class MockLoginRepositoryImp extends _i1.Mock
         ),
       ) as _i3.IGetUserTokenDataSource);
   @override
-  _i6.Future<_i4.Either<_i7.Failure, _i8.UserEntity>> getUserLogin() =>
+  _i4.IGetUserByGoogleLoginDataSource get getUserByGoogleLoginDataSource =>
+      (super.noSuchMethod(
+        Invocation.getter(#getUserByGoogleLoginDataSource),
+        returnValue: _FakeIGetUserByGoogleLoginDataSource_2(
+          this,
+          Invocation.getter(#getUserByGoogleLoginDataSource),
+        ),
+      ) as _i4.IGetUserByGoogleLoginDataSource);
+  @override
+  _i7.Future<_i5.Either<_i8.Failure, _i9.UserEntity>> getUserLogin() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserLogin,
           [],
         ),
-        returnValue: _i6.Future<_i4.Either<_i7.Failure, _i8.UserEntity>>.value(
-            _FakeEither_2<_i7.Failure, _i8.UserEntity>(
+        returnValue: _i7.Future<_i5.Either<_i8.Failure, _i9.UserEntity>>.value(
+            _FakeEither_3<_i8.Failure, _i9.UserEntity>(
           this,
           Invocation.method(
             #getUserLogin,
             [],
           ),
         )),
-      ) as _i6.Future<_i4.Either<_i7.Failure, _i8.UserEntity>>);
+      ) as _i7.Future<_i5.Either<_i8.Failure, _i9.UserEntity>>);
   @override
-  _i6.Future<_i4.Either<_i7.Failure, bool>> getUserToken(
+  _i7.Future<_i5.Either<_i8.Failure, bool>> getUserToken(
     String? email,
     String? password,
   ) =>
@@ -110,8 +133,8 @@ class MockLoginRepositoryImp extends _i1.Mock
             password,
           ],
         ),
-        returnValue: _i6.Future<_i4.Either<_i7.Failure, bool>>.value(
-            _FakeEither_2<_i7.Failure, bool>(
+        returnValue: _i7.Future<_i5.Either<_i8.Failure, bool>>.value(
+            _FakeEither_3<_i8.Failure, bool>(
           this,
           Invocation.method(
             #getUserToken,
@@ -121,5 +144,24 @@ class MockLoginRepositoryImp extends _i1.Mock
             ],
           ),
         )),
-      ) as _i6.Future<_i4.Either<_i7.Failure, bool>>);
+      ) as _i7.Future<_i5.Either<_i8.Failure, bool>>);
+  @override
+  _i7.Future<
+      _i5
+          .Either<_i8.Failure, _i10.GoogleSignInUser>> getUserByGoogleLogin() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserByGoogleLogin,
+          [],
+        ),
+        returnValue:
+            _i7.Future<_i5.Either<_i8.Failure, _i10.GoogleSignInUser>>.value(
+                _FakeEither_3<_i8.Failure, _i10.GoogleSignInUser>(
+          this,
+          Invocation.method(
+            #getUserByGoogleLogin,
+            [],
+          ),
+        )),
+      ) as _i7.Future<_i5.Either<_i8.Failure, _i10.GoogleSignInUser>>);
 }

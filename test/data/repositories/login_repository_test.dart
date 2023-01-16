@@ -2,26 +2,34 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart';
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
 import 'package:poc/data/data_sources/user_login_data_source.dart';
+import 'package:poc/data/external/google_sign_in.dart';
 import 'package:poc/data/repositories/login_repository.dart';
 import 'package:poc/core/errors/failures.dart';
 
 import '../../mock/mock_models.dart';
 import 'login_repository_test.mocks.dart';
 
-@GenerateMocks([IUserLoginDataSource, IGetUserTokenDataSource])
+@GenerateMocks([
+  IUserLoginDataSource,
+  IGetUserTokenDataSource,
+  IGetUserByGoogleLoginDataSource
+])
 void main() {
   late LoginRepositoryImp repository;
   late IUserLoginDataSource userLoginDataSource;
   late IGetUserTokenDataSource getUserTokenDataSource;
+  late IGetUserByGoogleLoginDataSource getUserByGoogleLoginDataSource;
 
   setUp(() {
     userLoginDataSource = MockIUserLoginDataSource();
     getUserTokenDataSource = MockIGetUserTokenDataSource();
+    getUserByGoogleLoginDataSource = MockIGetUserByGoogleLoginDataSource();
 
-    repository =
-        LoginRepositoryImp(userLoginDataSource, getUserTokenDataSource);
+    repository = LoginRepositoryImp(userLoginDataSource, getUserTokenDataSource,
+        getUserByGoogleLoginDataSource);
   });
 
   group('GetUserLogin: ', () {
@@ -59,7 +67,28 @@ void main() {
       final result = await repository.getUserToken('email', 'password');
       expect(
           result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
-      verify(getUserTokenDataSource.getUserToken('email', 'password')).called(1);
+      verify(getUserTokenDataSource.getUserToken('email', 'password'))
+          .called(1);
+    });
+  });
+
+  group('GetUserByGoogleLoginDataSource: ', () {
+    test('Should return true with a success google login', () async {
+      when(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).thenAnswer(
+          (_) async => GoogleSignInUser(
+              displayName: 'nomeTeste', email: '', photoUrl: ''));
+      final result = await repository.getUserByGoogleLogin();
+      expect(result.fold((l) => null, (r) => r.displayName), 'nomeTeste');
+      verify(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).called(1);
+    });
+
+    test('Should return failure with a error on google login', () async {
+      when(getUserByGoogleLoginDataSource.getUserByGoogleLogin())
+          .thenThrow((_) async => UserFailure());
+      final result = await repository.getUserByGoogleLogin();
+      expect(
+          result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
+      verify(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).called(1);
     });
   });
 }

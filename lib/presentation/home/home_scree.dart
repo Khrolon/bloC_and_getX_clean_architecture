@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:poc/presentation/home/bloc/home_bloc.dart';
-import 'package:poc/presentation/home/bloc/home_state.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeBloc bloc;

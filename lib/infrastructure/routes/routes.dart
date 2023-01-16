@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:poc/presentation/home/bloc/home_bloc.dart';
-import 'package:poc/presentation/home/bloc/home_state.dart';
 import 'package:poc/presentation/home/home_scree.dart';
 import 'package:poc/presentation/login/bloc/login_bloc.dart';
 import 'package:poc/presentation/login/login.screen.dart';

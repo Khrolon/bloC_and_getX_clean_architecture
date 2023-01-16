@@ -1,4 +1,4 @@
-import 'package:poc/data/http_client/http_client.dart';
+import 'package:poc/data/external/http_client.dart';
 import 'package:poc/data/models/user_model.dart';
 import 'package:poc/core/errors/failures.dart';
 import 'package:poc/core/utils/constants.dart';

@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:poc/data/http_client/http_client.dart';
+import 'package:poc/data/external/http_client.dart';
 import 'package:poc/core/errors/failures.dart';
 import 'package:poc/core/utils/constants.dart';
 

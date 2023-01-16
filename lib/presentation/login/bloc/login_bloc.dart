@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:poc/data/models/user_model.dart';
+
 import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart';
+import 'package:poc/domain/usecases/google_login_use_case.dart';
 import 'package:poc/domain/usecases/user_login_use_cases.dart';
 import 'package:poc/presentation/login/bloc/login_event.dart';
 import 'package:poc/presentation/login/bloc/login_state.dart';
@@ -11,9 +15,11 @@ import 'package:poc/presentation/login/bloc/login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final IGetTokenUserLoginUseCase getTokenUserLoginUseCase;
   final IUserLoginUseCase userLoginUseCase;
+  final IGoogleLoginUseCase googleLoginUseCase;
   LoginBloc({
-    required this.userLoginUseCase,
     required this.getTokenUserLoginUseCase,
+    required this.userLoginUseCase,
+    required this.googleLoginUseCase,
   }) : super(LoginStateAuthPending()) {
     on<LoginEventGetToken>(_mapLoginEventGetTokenToState);
     on<LoginEventGetUser>(_mapLoginEventGetUserToState);
@@ -49,18 +55,32 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
   }
 
-  FutureOr<void> _mapLoginEventForgothPasswordToState(
+  void _mapLoginEventForgothPasswordToState(
       LoginEventForgothPassword event, Emitter<LoginState> emit) {
     print('clicou em esqueceu senha');
   }
 
-  FutureOr<void> _mapLoginEventCreateUserToState(
+  void _mapLoginEventCreateUserToState(
       LoginEventCreateUser event, Emitter<LoginState> emit) {
     print('clicou em criar usuario');
   }
 
-  FutureOr<void> _mapLoginEventGoogleLoginToState(
-      LoginEventGoogleLogin event, Emitter<LoginState> emit) {
-    print('clicou em criar acessar com google');
+  void _mapLoginEventGoogleLoginToState(
+      LoginEventGoogleLogin event, Emitter<LoginState> emit) async {
+    emit(LoginStateLoading());
+    var result = await googleLoginUseCase();
+    result.fold(
+      (l) => emit(LoginStateError('Login erro')),
+      (r) {
+        UserModel newUser = UserModel(
+          id: 0,
+          picture: r.photoUrl,
+          name: r.displayName,
+          email: r.email,
+        );
+        userModel = newUser;
+        return emit(LoginCompleteGoToSecondPage());
+      },
+    );
   }
 }
