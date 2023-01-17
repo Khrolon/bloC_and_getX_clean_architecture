@@ -7,3 +7,5 @@ class HomeState extends Equatable {
 }
 
 class HomeInitialState extends HomeState {}
+
+class HomeStatePop extends HomeState {}

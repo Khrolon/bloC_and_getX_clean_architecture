@@ -8,7 +8,6 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:poc/core/errors/failures.dart' as _i5;
-import 'package:poc/data/external/google_sign_in.dart' as _i7;
 import 'package:poc/domain/entities/user_entity.dart' as _i6;
 import 'package:poc/domain/repositories/login_repository.dart' as _i3;
 
@@ -83,20 +82,35 @@ class MockILoginRepository extends _i1.Mock implements _i3.ILoginRepository {
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.UserEntity>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i7.GoogleSignInUser>>
-      getUserByGoogleLogin() => (super.noSuchMethod(
-            Invocation.method(
-              #getUserByGoogleLogin,
-              [],
-            ),
-            returnValue:
-                _i4.Future<_i2.Either<_i5.Failure, _i7.GoogleSignInUser>>.value(
-                    _FakeEither_0<_i5.Failure, _i7.GoogleSignInUser>(
-              this,
-              Invocation.method(
-                #getUserByGoogleLogin,
-                [],
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.Failure, _i7.GoogleSignInUser>>);
+  _i4.Future<_i2.Either<_i5.Failure, bool>> getUserByGoogleLogin() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserByGoogleLogin,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+            _FakeEither_0<_i5.Failure, bool>(
+          this,
+          Invocation.method(
+            #getUserByGoogleLogin,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, bool>> getUserTokenByGoogleLogin() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserTokenByGoogleLogin,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+            _FakeEither_0<_i5.Failure, bool>(
+          this,
+          Invocation.method(
+            #getUserTokenByGoogleLogin,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
 }

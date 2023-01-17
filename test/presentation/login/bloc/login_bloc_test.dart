@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:poc/core/errors/failures.dart';
-import 'package:poc/data/external/google_sign_in.dart';
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart';
 import 'package:poc/domain/usecases/google_login_use_case.dart';
 import 'package:poc/domain/usecases/user_login_use_cases.dart';
@@ -89,8 +88,7 @@ void main() {
       "Should return success on emitsInOrder case in event: LoginEventGoogleLogin",
       () {
     //Arrange
-    when(googleLoginUseCase()).thenAnswer((_) async =>
-        Right(GoogleSignInUser(displayName: '', email: '', photoUrl: '')));
+    when(googleLoginUseCase()).thenAnswer((_) async => Right(true));
     //Act
     bloc.add(LoginEventGoogleLogin());
     //Assert

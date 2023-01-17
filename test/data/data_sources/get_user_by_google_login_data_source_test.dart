@@ -18,12 +18,12 @@ void main() {
   test('Should return success with return a user on call google sigIn',
       () async {
     //Arrange
-    when(googleSignInExternal.googleSignInExternal()).thenAnswer((_) async =>
-        GoogleSignInUser(displayName: 'nameTeste', email: '', photoUrl: ''));
+    when(googleSignInExternal.googleSignInExternal())
+        .thenAnswer((_) async => true);
     //Act
     final result = await dataSource.getUserByGoogleLogin();
     //Assert
-    expect(result.displayName, 'nameTeste');
+    expect(result, true);
   });
 
   test('Should return success with a error on call google sigIn', () async {

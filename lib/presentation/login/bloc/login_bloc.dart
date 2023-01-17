@@ -1,10 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:poc/data/models/user_model.dart';
-
 import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart';
 import 'package:poc/domain/usecases/google_login_use_case.dart';
@@ -27,7 +25,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEventCreateUser>(_mapLoginEventCreateUserToState);
     on<LoginEventGoogleLogin>(_mapLoginEventGoogleLoginToState);
   }
-  late UserEntity userModel;
+  UserEntity? userModel;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -71,16 +69,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     var result = await googleLoginUseCase();
     result.fold(
       (l) => emit(LoginStateError('Login erro')),
-      (r) {
-        UserModel newUser = UserModel(
-          id: 0,
-          picture: r.photoUrl,
-          name: r.displayName,
-          email: r.email,
-        );
-        userModel = newUser;
-        return emit(LoginCompleteGoToSecondPage());
-      },
+      (r) => add(LoginEventGetUser()),
     );
   }
 }

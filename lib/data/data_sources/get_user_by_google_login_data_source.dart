@@ -1,7 +1,7 @@
 import 'package:poc/data/external/google_sign_in.dart';
 
 abstract class IGetUserByGoogleLoginDataSource {
-  Future<GoogleSignInUser> getUserByGoogleLogin();
+  Future<bool> getUserByGoogleLogin();
 }
 
 class GetUserByGoogleLoginDataSource extends IGetUserByGoogleLoginDataSource {
@@ -9,12 +9,11 @@ class GetUserByGoogleLoginDataSource extends IGetUserByGoogleLoginDataSource {
 
   GetUserByGoogleLoginDataSource(this.googleSignInExternal);
   @override
-  Future<GoogleSignInUser> getUserByGoogleLogin() async {
+  Future<bool> getUserByGoogleLogin() async {
     try {
-      final user = await googleSignInExternal.googleSignInExternal();
-      print(user.displayName);
-      return user;
+      return await googleSignInExternal.googleSignInExternal();
     } catch (e) {
+      print(e);
       throw Exception();
     }
   }

@@ -19,17 +19,6 @@ import 'package:poc/data/external/google_sign_in.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeGoogleSignInUser_0 extends _i1.SmartFake
-    implements _i2.GoogleSignInUser {
-  _FakeGoogleSignInUser_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
 /// A class which mocks [GoogleSignInExternal].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -40,19 +29,11 @@ class MockGoogleSignInExternal extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i2.GoogleSignInUser> googleSignInExternal() =>
-      (super.noSuchMethod(
+  _i3.Future<bool> googleSignInExternal() => (super.noSuchMethod(
         Invocation.method(
           #googleSignInExternal,
           [],
         ),
-        returnValue:
-            _i3.Future<_i2.GoogleSignInUser>.value(_FakeGoogleSignInUser_0(
-          this,
-          Invocation.method(
-            #googleSignInExternal,
-            [],
-          ),
-        )),
-      ) as _i3.Future<_i2.GoogleSignInUser>);
+        returnValue: _i3.Future<bool>.value(false),
+      ) as _i3.Future<bool>);
 }

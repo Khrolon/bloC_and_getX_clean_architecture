@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart';
+import 'package:poc/data/data_sources/get_user_token_by_google_login_data_source.dart';
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
 import 'package:poc/data/data_sources/user_login_data_source.dart';
-import 'package:poc/data/external/google_sign_in.dart';
 import 'package:poc/data/repositories/login_repository.dart';
 import 'package:poc/core/errors/failures.dart';
 
@@ -15,21 +15,25 @@ import 'login_repository_test.mocks.dart';
 @GenerateMocks([
   IUserLoginDataSource,
   IGetUserTokenDataSource,
-  IGetUserByGoogleLoginDataSource
+  IGetUserByGoogleLoginDataSource,
+  IGetUserTokenByGoogleLoginDataSource,
 ])
 void main() {
   late LoginRepositoryImp repository;
   late IUserLoginDataSource userLoginDataSource;
   late IGetUserTokenDataSource getUserTokenDataSource;
   late IGetUserByGoogleLoginDataSource getUserByGoogleLoginDataSource;
+  late IGetUserTokenByGoogleLoginDataSource getUserTokenByGoogleLoginDataSource;
 
   setUp(() {
     userLoginDataSource = MockIUserLoginDataSource();
     getUserTokenDataSource = MockIGetUserTokenDataSource();
     getUserByGoogleLoginDataSource = MockIGetUserByGoogleLoginDataSource();
+    getUserTokenByGoogleLoginDataSource =
+        MockIGetUserTokenByGoogleLoginDataSource();
 
     repository = LoginRepositoryImp(userLoginDataSource, getUserTokenDataSource,
-        getUserByGoogleLoginDataSource);
+        getUserByGoogleLoginDataSource, getUserTokenByGoogleLoginDataSource);
   });
 
   group('GetUserLogin: ', () {
@@ -74,11 +78,10 @@ void main() {
 
   group('GetUserByGoogleLoginDataSource: ', () {
     test('Should return true with a success google login', () async {
-      when(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).thenAnswer(
-          (_) async => GoogleSignInUser(
-              displayName: 'nomeTeste', email: '', photoUrl: ''));
+      when(getUserByGoogleLoginDataSource.getUserByGoogleLogin())
+          .thenAnswer((_) async => true);
       final result = await repository.getUserByGoogleLogin();
-      expect(result.fold((l) => null, (r) => r.displayName), 'nomeTeste');
+      expect(result, true);
       verify(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).called(1);
     });
 

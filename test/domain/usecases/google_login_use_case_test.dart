@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:poc/core/errors/failures.dart';
-import 'package:poc/data/external/google_sign_in.dart';
 import 'package:poc/domain/repositories/login_repository.dart';
 import 'package:poc/domain/usecases/google_login_use_case.dart';
 
@@ -23,13 +22,12 @@ void main() {
       () async {
     //Arrange
     when(repository.getUserByGoogleLogin()).thenAnswer(
-      (_) async => Right(
-          GoogleSignInUser(displayName: 'nomeTeste', email: '', photoUrl: '')),
+      (_) async => Right(true),
     );
     //Act
     final result = await useCase();
     //Assert
-    expect(result.fold((l) => null, (r) => r.displayName), 'nomeTeste');
+    expect(result, true);
   });
 
   test(

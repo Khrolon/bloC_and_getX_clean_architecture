@@ -8,7 +8,6 @@ import 'dart:async' as _i5;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:poc/core/errors/failures.dart' as _i6;
-import 'package:poc/data/external/google_sign_in.dart' as _i10;
 import 'package:poc/domain/entities/user_entity.dart' as _i7;
 import 'package:poc/domain/repositories/login_repository.dart' as _i2;
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart' as _i8;
@@ -143,20 +142,18 @@ class MockGoogleLoginUseCase extends _i1.Mock
         ),
       ) as _i2.ILoginRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, _i10.GoogleSignInUser>> call() =>
-      (super.noSuchMethod(
+  _i5.Future<_i3.Either<_i6.Failure, bool>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
           [],
         ),
-        returnValue:
-            _i5.Future<_i3.Either<_i6.Failure, _i10.GoogleSignInUser>>.value(
-                _FakeEither_1<_i6.Failure, _i10.GoogleSignInUser>(
+        returnValue: _i5.Future<_i3.Either<_i6.Failure, bool>>.value(
+            _FakeEither_1<_i6.Failure, bool>(
           this,
           Invocation.method(
             #call,
             [],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i10.GoogleSignInUser>>);
+      ) as _i5.Future<_i3.Either<_i6.Failure, bool>>);
 }

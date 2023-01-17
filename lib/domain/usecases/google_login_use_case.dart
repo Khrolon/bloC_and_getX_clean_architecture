@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:poc/core/errors/failures.dart';
-import 'package:poc/data/external/google_sign_in.dart';
 import 'package:poc/domain/repositories/login_repository.dart';
 
 abstract class IGoogleLoginUseCase {
-  Future<Either<Failure, GoogleSignInUser>> call();
+  Future<Either<Failure, bool>> call();
 }
 
 class GoogleLoginUseCase extends IGoogleLoginUseCase {
@@ -12,7 +11,7 @@ class GoogleLoginUseCase extends IGoogleLoginUseCase {
 
   GoogleLoginUseCase(this.repository);
   @override
-  Future<Either<Failure, GoogleSignInUser>> call() async {
+  Future<Either<Failure, bool>> call() async {
     return await repository.getUserByGoogleLogin();
   }
 }
