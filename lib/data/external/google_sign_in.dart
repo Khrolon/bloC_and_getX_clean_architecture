@@ -12,7 +12,11 @@ class GoogleSignInCall extends GoogleSignInExternal {
   @override
   Future<bool> googleSignInExternal() async {
     GoogleSignInAccount? user;
-    
+
+    if (_googleSignIn.currentUser != null) {
+      _googleSignIn.disconnect();
+    }
+
     await _googleSignIn.signIn().then((result) async {
       print(result);
       user = result;
