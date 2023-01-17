@@ -27,7 +27,7 @@ void main() {
     //Act
     final result = await useCase();
     //Assert
-    expect(result, true);
+    expect(result, Right(true));
   });
 
   test(

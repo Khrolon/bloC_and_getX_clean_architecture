@@ -15,10 +15,8 @@ class GetUserTokenByGoogleLoginDataSource
   @override
   Future<bool> getUserTokenByGoogleLogin() async {
     final token = GetStorage().read('web_token');
-    print('print tplken dentro do post: $token');
     final response = await client
         .httpPost(apiUrlForGetTokenByGoogleLogin, body: {"token": token});
-    print('response do primeiro post: ${response.statusCode}');
     if (response.statusCode == 200) {
       var data = response.data;
       GetStorage().write('web_token', (data["token"]).toString());
@@ -32,7 +30,6 @@ class GetUserTokenByGoogleLoginDataSource
   Future<void> _createGoogleUser(String token) async {
     final response = await client
         .httpPost(apiUrlForCreateUserByGoogleLogin, body: {"token": token});
-    print('response do googleUser: ${response.statusCode}');
     if (response.statusCode == 200) {
       var data = response.data;
       GetStorage().write('web_token', (data["token"]).toString());

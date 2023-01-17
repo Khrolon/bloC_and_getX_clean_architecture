@@ -5,6 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart';
 import 'package:poc/data/data_sources/get_user_token_by_google_login_data_source.dart';
 import 'package:poc/data/data_sources/get_user_token_data_source.dart';
+import 'package:poc/data/data_sources/user_google_logout_data_source.dart';
 import 'package:poc/data/data_sources/user_login_data_source.dart';
 import 'package:poc/data/repositories/login_repository.dart';
 import 'package:poc/core/errors/failures.dart';
@@ -17,6 +18,7 @@ import 'login_repository_test.mocks.dart';
   IGetUserTokenDataSource,
   IGetUserByGoogleLoginDataSource,
   IGetUserTokenByGoogleLoginDataSource,
+  IUserGoogleLogoutDataSource,
 ])
 void main() {
   late LoginRepositoryImp repository;
@@ -24,16 +26,22 @@ void main() {
   late IGetUserTokenDataSource getUserTokenDataSource;
   late IGetUserByGoogleLoginDataSource getUserByGoogleLoginDataSource;
   late IGetUserTokenByGoogleLoginDataSource getUserTokenByGoogleLoginDataSource;
-
+  late IUserGoogleLogoutDataSource userGoogleLogoutDataSource;
   setUp(() {
     userLoginDataSource = MockIUserLoginDataSource();
     getUserTokenDataSource = MockIGetUserTokenDataSource();
     getUserByGoogleLoginDataSource = MockIGetUserByGoogleLoginDataSource();
     getUserTokenByGoogleLoginDataSource =
         MockIGetUserTokenByGoogleLoginDataSource();
+    userGoogleLogoutDataSource = MockIUserGoogleLogoutDataSource();
 
-    repository = LoginRepositoryImp(userLoginDataSource, getUserTokenDataSource,
-        getUserByGoogleLoginDataSource, getUserTokenByGoogleLoginDataSource);
+    repository = LoginRepositoryImp(
+      userLoginDataSource: userLoginDataSource,
+      getUserTokenDataSource: getUserTokenDataSource,
+      getUserByGoogleLoginDataSource: getUserByGoogleLoginDataSource,
+      getUserTokenByGoogleLoginDataSource: getUserTokenByGoogleLoginDataSource,
+      userGoogleLogoutDataSource: userGoogleLogoutDataSource,
+    );
   });
 
   group('GetUserLogin: ', () {
@@ -78,10 +86,16 @@ void main() {
 
   group('GetUserByGoogleLoginDataSource: ', () {
     test('Should return true with a success google login', () async {
+      //Arrange
       when(getUserByGoogleLoginDataSource.getUserByGoogleLogin())
           .thenAnswer((_) async => true);
+      when(getUserTokenByGoogleLoginDataSource.getUserTokenByGoogleLogin())
+          .thenAnswer((_) async => true);
+      //Act
       final result = await repository.getUserByGoogleLogin();
-      expect(result, true);
+
+      //Assert
+      expect(result, Right(true));
       verify(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).called(1);
     });
 
@@ -92,6 +106,30 @@ void main() {
       expect(
           result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
       verify(getUserByGoogleLoginDataSource.getUserByGoogleLogin()).called(1);
+    });
+  });
+
+  group('UserGoogleLogoutDataSource: ', () {
+    test('Should return true with a success google logout', () async {
+      //Arrange
+      when(userGoogleLogoutDataSource.userGoogleLogout())
+          .thenAnswer((_) async => true);
+
+      //Act
+      final result = await repository.userGoogleLogout();
+
+      //Assert
+      expect(result, Right(true));
+      verify(userGoogleLogoutDataSource.userGoogleLogout()).called(1);
+    });
+
+    test('Should return failure with a error on google logout', () async {
+      when(userGoogleLogoutDataSource.userGoogleLogout())
+          .thenThrow((_) async => UserFailure());
+      final result = await repository.userGoogleLogout();
+      expect(
+          result.fold((l) => UserFailure(), (r) => null), isA<UserFailure>());
+      verify(userGoogleLogoutDataSource.userGoogleLogout()).called(1);
     });
   });
 }

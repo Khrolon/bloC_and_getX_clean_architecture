@@ -89,6 +89,7 @@ void main() {
       () {
     //Arrange
     when(googleLoginUseCase()).thenAnswer((_) async => Right(true));
+    when(userLoginUseCase()).thenAnswer((_) async => Right(mockUserModel));
     //Act
     bloc.add(LoginEventGoogleLogin());
     //Assert

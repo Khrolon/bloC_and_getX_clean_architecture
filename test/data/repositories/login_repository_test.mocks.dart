@@ -11,6 +11,8 @@ import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart'
 import 'package:poc/data/data_sources/get_user_token_by_google_login_data_source.dart'
     as _i7;
 import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i5;
+import 'package:poc/data/data_sources/user_google_logout_data_source.dart'
+    as _i8;
 import 'package:poc/data/data_sources/user_login_data_source.dart' as _i3;
 import 'package:poc/data/models/user_model.dart' as _i2;
 
@@ -118,6 +120,25 @@ class MockIGetUserTokenByGoogleLoginDataSource extends _i1.Mock
   _i4.Future<bool> getUserTokenByGoogleLogin() => (super.noSuchMethod(
         Invocation.method(
           #getUserTokenByGoogleLogin,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+}
+
+/// A class which mocks [IUserGoogleLogoutDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIUserGoogleLogoutDataSource extends _i1.Mock
+    implements _i8.IUserGoogleLogoutDataSource {
+  MockIUserGoogleLogoutDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<bool> userGoogleLogout() => (super.noSuchMethod(
+        Invocation.method(
+          #userGoogleLogout,
           [],
         ),
         returnValue: _i4.Future<bool>.value(false),

@@ -21,6 +21,10 @@ Map<String, dynamic> mockJsonUSer = {
   'email': 'hawike6670@octovie.com'
 };
 
+Map<String, dynamic> mockJsonGoogleToken = {
+  'token': 'testeToken',
+};
+
 var mockJsonResponseData =
     "{token: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNaXRyYSIsImp0aSI6IjI0NCIsInN1YiI6InZpdG9yLmFsbWVpZGFAbWl0cmFlY3AuY29tIiwiaWF0IjoxNjczNzI3NDE3LCJleHAiOjI1Mzc3Mjc0MTd9.K4UR-cDUSvaQeZPGW6Vn2Tn7RKmofcWvs1Xx-4qmaGw, type: Bearer, accessType: null}";
 

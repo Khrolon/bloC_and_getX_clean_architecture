@@ -36,4 +36,12 @@ class MockGoogleSignInExternal extends _i1.Mock
         ),
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
+  @override
+  _i3.Future<bool> googleLogout() => (super.noSuchMethod(
+        Invocation.method(
+          #googleLogout,
+          [],
+        ),
+        returnValue: _i3.Future<bool>.value(false),
+      ) as _i3.Future<bool>);
 }

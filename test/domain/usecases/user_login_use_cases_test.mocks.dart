@@ -3,19 +3,21 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i8;
+import 'dart:async' as _i9;
 
-import 'package:dartz/dartz.dart' as _i6;
+import 'package:dartz/dartz.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:poc/core/errors/failures.dart' as _i9;
+import 'package:poc/core/errors/failures.dart' as _i10;
 import 'package:poc/data/data_sources/get_user_by_google_login_data_source.dart'
     as _i4;
 import 'package:poc/data/data_sources/get_user_token_by_google_login_data_source.dart'
     as _i5;
 import 'package:poc/data/data_sources/get_user_token_data_source.dart' as _i3;
+import 'package:poc/data/data_sources/user_google_logout_data_source.dart'
+    as _i6;
 import 'package:poc/data/data_sources/user_login_data_source.dart' as _i2;
-import 'package:poc/data/repositories/login_repository.dart' as _i7;
-import 'package:poc/domain/entities/user_entity.dart' as _i10;
+import 'package:poc/data/repositories/login_repository.dart' as _i8;
+import 'package:poc/domain/entities/user_entity.dart' as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -72,8 +74,19 @@ class _FakeIGetUserTokenByGoogleLoginDataSource_3 extends _i1.SmartFake
         );
 }
 
-class _FakeEither_4<L, R> extends _i1.SmartFake implements _i6.Either<L, R> {
-  _FakeEither_4(
+class _FakeIUserGoogleLogoutDataSource_4 extends _i1.SmartFake
+    implements _i6.IUserGoogleLogoutDataSource {
+  _FakeIUserGoogleLogoutDataSource_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEither_5<L, R> extends _i1.SmartFake implements _i7.Either<L, R> {
+  _FakeEither_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -86,7 +99,7 @@ class _FakeEither_4<L, R> extends _i1.SmartFake implements _i6.Either<L, R> {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginRepositoryImp extends _i1.Mock
-    implements _i7.LoginRepositoryImp {
+    implements _i8.LoginRepositoryImp {
   MockLoginRepositoryImp() {
     _i1.throwOnMissingStub(this);
   }
@@ -126,23 +139,33 @@ class MockLoginRepositoryImp extends _i1.Mock
             ),
           ) as _i5.IGetUserTokenByGoogleLoginDataSource);
   @override
-  _i8.Future<_i6.Either<_i9.Failure, _i10.UserEntity>> getUserLogin() =>
+  _i6.IUserGoogleLogoutDataSource get userGoogleLogoutDataSource =>
+      (super.noSuchMethod(
+        Invocation.getter(#userGoogleLogoutDataSource),
+        returnValue: _FakeIUserGoogleLogoutDataSource_4(
+          this,
+          Invocation.getter(#userGoogleLogoutDataSource),
+        ),
+      ) as _i6.IUserGoogleLogoutDataSource);
+  @override
+  _i9.Future<_i7.Either<_i10.Failure, _i11.UserEntity>> getUserLogin() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserLogin,
           [],
         ),
-        returnValue: _i8.Future<_i6.Either<_i9.Failure, _i10.UserEntity>>.value(
-            _FakeEither_4<_i9.Failure, _i10.UserEntity>(
+        returnValue:
+            _i9.Future<_i7.Either<_i10.Failure, _i11.UserEntity>>.value(
+                _FakeEither_5<_i10.Failure, _i11.UserEntity>(
           this,
           Invocation.method(
             #getUserLogin,
             [],
           ),
         )),
-      ) as _i8.Future<_i6.Either<_i9.Failure, _i10.UserEntity>>);
+      ) as _i9.Future<_i7.Either<_i10.Failure, _i11.UserEntity>>);
   @override
-  _i8.Future<_i6.Either<_i9.Failure, bool>> getUserToken(
+  _i9.Future<_i7.Either<_i10.Failure, bool>> getUserToken(
     String? email,
     String? password,
   ) =>
@@ -154,8 +177,8 @@ class MockLoginRepositoryImp extends _i1.Mock
             password,
           ],
         ),
-        returnValue: _i8.Future<_i6.Either<_i9.Failure, bool>>.value(
-            _FakeEither_4<_i9.Failure, bool>(
+        returnValue: _i9.Future<_i7.Either<_i10.Failure, bool>>.value(
+            _FakeEither_5<_i10.Failure, bool>(
           this,
           Invocation.method(
             #getUserToken,
@@ -165,37 +188,53 @@ class MockLoginRepositoryImp extends _i1.Mock
             ],
           ),
         )),
-      ) as _i8.Future<_i6.Either<_i9.Failure, bool>>);
+      ) as _i9.Future<_i7.Either<_i10.Failure, bool>>);
   @override
-  _i8.Future<_i6.Either<_i9.Failure, bool>> getUserByGoogleLogin() =>
+  _i9.Future<_i7.Either<_i10.Failure, bool>> getUserByGoogleLogin() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserByGoogleLogin,
           [],
         ),
-        returnValue: _i8.Future<_i6.Either<_i9.Failure, bool>>.value(
-            _FakeEither_4<_i9.Failure, bool>(
+        returnValue: _i9.Future<_i7.Either<_i10.Failure, bool>>.value(
+            _FakeEither_5<_i10.Failure, bool>(
           this,
           Invocation.method(
             #getUserByGoogleLogin,
             [],
           ),
         )),
-      ) as _i8.Future<_i6.Either<_i9.Failure, bool>>);
+      ) as _i9.Future<_i7.Either<_i10.Failure, bool>>);
   @override
-  _i8.Future<_i6.Either<_i9.Failure, bool>> getUserTokenByGoogleLogin() =>
+  _i9.Future<_i7.Either<_i10.Failure, bool>> getUserTokenByGoogleLogin() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserTokenByGoogleLogin,
           [],
         ),
-        returnValue: _i8.Future<_i6.Either<_i9.Failure, bool>>.value(
-            _FakeEither_4<_i9.Failure, bool>(
+        returnValue: _i9.Future<_i7.Either<_i10.Failure, bool>>.value(
+            _FakeEither_5<_i10.Failure, bool>(
           this,
           Invocation.method(
             #getUserTokenByGoogleLogin,
             [],
           ),
         )),
-      ) as _i8.Future<_i6.Either<_i9.Failure, bool>>);
+      ) as _i9.Future<_i7.Either<_i10.Failure, bool>>);
+  @override
+  _i9.Future<_i7.Either<_i10.Failure, bool>> userGoogleLogout() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #userGoogleLogout,
+          [],
+        ),
+        returnValue: _i9.Future<_i7.Either<_i10.Failure, bool>>.value(
+            _FakeEither_5<_i10.Failure, bool>(
+          this,
+          Invocation.method(
+            #userGoogleLogout,
+            [],
+          ),
+        )),
+      ) as _i9.Future<_i7.Either<_i10.Failure, bool>>);
 }
