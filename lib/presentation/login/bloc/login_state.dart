@@ -16,3 +16,7 @@ class LoginStateError extends LoginState {
 }
 
 class LoginCompleteGoToSecondPage extends LoginState {}
+
+class LoginStateShowPassword extends LoginState {}
+
+class LoginStateHidePassword extends LoginState {}

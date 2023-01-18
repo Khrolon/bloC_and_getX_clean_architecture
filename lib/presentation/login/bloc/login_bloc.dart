@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -24,6 +26,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEventForgothPassword>(_mapLoginEventForgothPasswordToState);
     on<LoginEventCreateUser>(_mapLoginEventCreateUserToState);
     on<LoginEventGoogleLogin>(_mapLoginEventGoogleLoginToState);
+    on<LoginEventShowPassword>(_mapLoginEventShowPasswordToState);
+    on<LoginEventHidePassword>(_mapLoginEventHidePasswordToState);
   }
   UserEntity? userModel;
   TextEditingController emailController = TextEditingController();
@@ -71,5 +75,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       (l) => emit(LoginStateError('Login erro')),
       (r) => add(LoginEventGetUser()),
     );
+  }
+
+  FutureOr<void> _mapLoginEventShowPasswordToState(
+      LoginEventShowPassword event, Emitter<LoginState> emit) {
+    emit(LoginStateShowPassword());
+  }
+
+  FutureOr<void> _mapLoginEventHidePasswordToState(
+      LoginEventHidePassword event, Emitter<LoginState> emit) {
+    emit(LoginStateHidePassword());
   }
 }

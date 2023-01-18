@@ -20,3 +20,6 @@ class LoginEventGoogleLogin extends LoginEvent {}
 
 class LoginEventCreateUser extends LoginEvent {}
 
+class LoginEventShowPassword extends LoginEvent {}
+
+class LoginEventHidePassword extends LoginEvent {}

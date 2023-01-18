@@ -55,13 +55,46 @@ class LoginScreen extends StatelessWidget {
                       // enabled: controllerServer.getSelectedIsNotEmpty() &&
                       //     controllerLogin.checkTermsOfUser.isTrue,
                     ),
-                    CustomTextField(
-                      labelText: 'Senha',
-                      obscureText: true,
-                      controller: bloc.passwordController,
-                      labelTextFontSize: 16,
-                      // enabled: controllerServer.getSelectedIsNotEmpty() &&
-                      //     controllerLogin.checkTermsOfUser.isTrue,
+                    BlocBuilder<LoginBloc, LoginState>(
+                      bloc: bloc,
+                      builder: (((context, state) {
+                        if (state is LoginStateShowPassword) {
+                          return CustomTextField(
+                            labelText: 'Senha',
+                            obscureText: true,
+                            controller: bloc.passwordController,
+                            labelTextFontSize: 16,
+                            showPassword: true,
+                            suffixIconWidget: GestureDetector(
+                              onTap: () {
+                                bloc.add(LoginEventHidePassword());
+                              },
+                              child: Icon(
+                                Icons.visibility,
+                                color: const Color(0xff7B8098).withOpacity(.79),
+                                size: 18,
+                              ),
+                            ),
+                          );
+                        }
+                        return CustomTextField(
+                          labelText: 'Senha',
+                          obscureText: true,
+                          controller: bloc.passwordController,
+                          labelTextFontSize: 16,
+                          showPassword: false,
+                          suffixIconWidget: GestureDetector(
+                            onTap: () {
+                              bloc.add(LoginEventShowPassword());
+                            },
+                            child: Icon(
+                              Icons.visibility_off,
+                              color: const Color(0xff7B8098).withOpacity(.79),
+                              size: 18,
+                            ),
+                          ),
+                        );
+                      })),
                     ),
                   ],
                 ),
