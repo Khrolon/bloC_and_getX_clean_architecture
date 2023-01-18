@@ -61,7 +61,7 @@ class LoginController extends GetxController {
     final result = await googleLoginUseCase();
 
     result.fold(
-      (l) => throw Exception(),
+      (l) => null,
       (r) async => await _getUserLoginData(),
     );
     loading.value = false;
