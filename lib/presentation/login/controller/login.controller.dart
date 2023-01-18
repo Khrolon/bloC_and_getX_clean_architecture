@@ -19,7 +19,7 @@ class LoginController extends GetxController {
     required this.googleLoginUseCase,
   });
 
-  final count = 0.obs;
+  RxBool showPassword = false.obs;
 
   late UserEntity userModel;
 
@@ -69,5 +69,9 @@ class LoginController extends GetxController {
 
   createUser() {
     print("Criar senha clicado");
+  }
+
+  void togglevisibility() {
+    showPassword.value = !showPassword.value;
   }
 }

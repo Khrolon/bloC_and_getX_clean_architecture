@@ -44,8 +44,21 @@ class LoginScreen extends GetView<LoginController> {
                     obscureText: true,
                     controller: controller.passwordController,
                     labelTextFontSize: 16,
-                    // enabled: controllerServer.getSelectedIsNotEmpty() &&
-                    //     controllerLogin.checkTermsOfUser.isTrue,
+                    showPassword: controller.showPassword.isTrue,
+                    suffixIconWidget: GestureDetector(
+                      onTap: () {
+                        controller.togglevisibility();
+                      },
+                      child: Icon(
+                        controller.showPassword.isFalse
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: const Color(0xff7B8098).withOpacity(.79),
+                        size: 18,
+                      ),
+                      // enabled: controllerServer.getSelectedIsNotEmpty() &&
+                      //     controllerLogin.checkTermsOfUser.isTrue,
+                    ),
                   ),
                 ],
               ),
