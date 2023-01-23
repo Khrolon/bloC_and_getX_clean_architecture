@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:poc/domain/entities/user_entity.dart';
 import 'package:poc/domain/usecases/user_google_logout.dart';
+import 'package:poc/infrastructure/routes/routes.dart';
 
 class HomeController extends GetxController {
   final IUserGoogleLogoutUseCase userGoogleLogoutUseCase;
@@ -20,5 +21,9 @@ class HomeController extends GetxController {
       (l) => throw Exception(),
       (r) => Get.back(),
     );
+  }
+
+  goToChartsScreen() {
+    Get.toNamed(AppRoutes.charts);
   }
 }

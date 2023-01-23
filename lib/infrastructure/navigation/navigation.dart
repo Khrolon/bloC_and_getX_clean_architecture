@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:poc/infrastructure/bindings/home_controller_binding.dart';
-import 'package:poc/infrastructure/bindings/login_controller_binding.dart';
+import 'package:poc/infrastructure/bindings/charts_binding.dart';
+import 'package:poc/infrastructure/bindings/home_binding.dart';
+import 'package:poc/infrastructure/bindings/login_binding.dart';
 import 'package:poc/infrastructure/routes/routes.dart';
+import 'package:poc/presentation/charts/widgets/charts_screen.dart';
 import 'package:poc/presentation/home/home_scree.dart';
 import 'package:poc/presentation/login/login.screen.dart';
 
@@ -18,6 +20,11 @@ class Nav {
       name: AppRoutes.home,
       page: () => HomeScreen(),
       binding: HomeControllerBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.charts,
+      page: () => ChartsScreen(),
+      binding: ChartsBinding(),
     ),
   ];
 }

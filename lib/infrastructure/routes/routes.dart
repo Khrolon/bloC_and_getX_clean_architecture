@@ -5,6 +5,7 @@ class AppRoutes {
 
   static const login = '/login';
   static const home = '/home';
+  static const charts = '/chart';
 
   // static final Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
   //   '/': (BuildContext context) => BlocProvider<LoginBloc>(

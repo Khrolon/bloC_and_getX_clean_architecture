@@ -18,18 +18,14 @@ class GoogleSignInCall extends GoogleSignInExternal {
     }
 
     await _googleSignIn.signIn().then((result) async {
-      print(result);
       user = result;
       await result!.authentication.then(
         (value) {
-          print(value);
           GetStorage().write('web_token', (value.accessToken).toString());
-          print('acess token: ${value.accessToken}');
         },
       );
     });
     if (user == null) {
-      print('aaaaa');
       throw Exception();
     } else {
       return true;

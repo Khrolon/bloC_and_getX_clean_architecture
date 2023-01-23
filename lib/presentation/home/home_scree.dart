@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poc/core/widgets/app_button_widget.dart';
 import 'package:poc/presentation/home/controller/home_controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -39,6 +40,19 @@ class HomeScreen extends GetView<HomeController> {
                 ),
               ),
               Text(controller.userModel.email),
+              SizedBox(height: 40),
+              AppButtonWidget(
+                child: Text(
+                  'Tela de graficos',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                onPressed: () {
+                  controller.goToChartsScreen();
+                },
+              ),
             ],
           ),
         ),
