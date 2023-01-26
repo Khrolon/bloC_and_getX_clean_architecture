@@ -5,7 +5,7 @@ import 'package:poc/infrastructure/bindings/charts_binding.dart';
 import 'package:poc/infrastructure/bindings/home_binding.dart';
 import 'package:poc/infrastructure/bindings/login_binding.dart';
 import 'package:poc/infrastructure/routes/routes.dart';
-import 'package:poc/presentation/charts/widgets/charts_screen.dart';
+import 'package:poc/presentation/charts/charts_screen.dart';
 import 'package:poc/presentation/home/home_scree.dart';
 import 'package:poc/presentation/login/login.screen.dart';
 
