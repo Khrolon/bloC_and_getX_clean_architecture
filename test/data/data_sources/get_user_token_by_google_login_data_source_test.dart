@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:poc/core/errors/failures.dart';
-import 'package:poc/core/utils/constants.dart';
 import 'package:poc/data/data_sources/get_user_token_by_google_login_data_source.dart';
 import 'package:poc/data/external/http_client.dart';
 

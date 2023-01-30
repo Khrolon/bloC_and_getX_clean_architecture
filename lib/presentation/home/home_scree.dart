@@ -43,7 +43,7 @@ class HomeScreen extends GetView<HomeController> {
               SizedBox(height: 40),
               AppButtonWidget(
                 child: Text(
-                  'Tela de graficos',
+                  'Tela de graficos com fl_chart',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -51,6 +51,19 @@ class HomeScreen extends GetView<HomeController> {
                 ),
                 onPressed: () {
                   controller.goToChartsScreen();
+                },
+              ),
+              SizedBox(height: 12),
+              AppButtonWidget(
+                child: Text(
+                  'Tela de graficos com syncfusion',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                onPressed: () {
+                  controller.goToOtherChartsScreen();
                 },
               ),
             ],

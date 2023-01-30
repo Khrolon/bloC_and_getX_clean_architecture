@@ -26,4 +26,8 @@ class HomeController extends GetxController {
   goToChartsScreen() {
     Get.toNamed(AppRoutes.charts);
   }
+
+  goToOtherChartsScreen() {
+    Get.toNamed(AppRoutes.otherCharts);
+  }
 }

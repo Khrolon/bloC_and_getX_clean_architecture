@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:poc/infrastructure/bindings/charts_binding.dart';
 import 'package:poc/infrastructure/bindings/home_binding.dart';
 import 'package:poc/infrastructure/bindings/login_binding.dart';
+import 'package:poc/infrastructure/bindings/other_charts_binding.dart';
 import 'package:poc/infrastructure/routes/routes.dart';
 import 'package:poc/presentation/charts/charts_screen.dart';
 import 'package:poc/presentation/home/home_scree.dart';
 import 'package:poc/presentation/login/login.screen.dart';
+import 'package:poc/presentation/other_charts/other_charts_screen.dart';
 
 class Nav {
   static List<GetPage> routes = [
@@ -25,6 +25,11 @@ class Nav {
       name: AppRoutes.charts,
       page: () => ChartsScreen(),
       binding: ChartsBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.otherCharts,
+      page: () => OtherChartsScreen(),
+      binding: OtherChartsBinding(),
     ),
   ];
 }

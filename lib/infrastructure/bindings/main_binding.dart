@@ -10,9 +10,7 @@ import 'package:poc/data/repositories/login_repository.dart';
 import 'package:poc/domain/repositories/login_repository.dart';
 import 'package:poc/domain/usecases/get_token_user_login_use_cases.dart';
 import 'package:poc/domain/usecases/google_login_use_case.dart';
-import 'package:poc/domain/usecases/user_google_logout.dart';
 import 'package:poc/domain/usecases/user_login_use_cases.dart';
-import 'package:poc/presentation/login/controller/login.controller.dart';
 
 class MainBinding extends Bindings {
   @override

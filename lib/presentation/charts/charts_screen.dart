@@ -10,7 +10,7 @@ class ChartsScreen extends GetView<ChartsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Charts Screen'),
+        title: Text('Charts with fl_chart Screen'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

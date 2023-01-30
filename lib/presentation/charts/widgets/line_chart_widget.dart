@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/src/painting/gradient.dart';
 
 class LineChartWidget extends StatelessWidget {
   LineChartWidget({Key? key}) : super(key: key);
